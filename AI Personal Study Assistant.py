@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 
 Study_log = "study_log.csv"
-headers = ["Date", "Subject", "TimeSpent", "Confidence", "Mood", "Details"]
+headers = ["Date", "Subject", "TimeSpent", "Confidence", "Details"]
 
 if not os.path.exists(Study_log):
     with open(Study_log, mode="w", newline="", encoding="utf-8") as file:
@@ -47,5 +47,6 @@ if not df.empty and df["Confidence"].notna().any():
     plt.title("Average Confidence per Subject")
     plt.ylabel("Confidence (0-100)")
     plt.show()
+
 
 
