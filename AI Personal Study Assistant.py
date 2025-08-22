@@ -16,15 +16,16 @@ if not os.path.exists(Study_log):
 
 date = datetime.now().strftime("%Y-%m-%d")
 subject = input("Subject: ")
-time_spent = input("Time spent (minutes): ")
+time_spent_hours = float(input("Time spent (hours, e.g., 1.5 for 1 hour 30 min): "))
+time_spent = round(time_spent_hours * 60)
 confidence = input("How confident do you feel in this session? (0-100): ")
-mood = input("Mood (optional): ")
 details = input("Details (what you practiced): ")
 
 
 with open(Study_log, mode="a", newline="", encoding="utf-8") as file:
     writer = csv.writer(file)
-    writer.writerow([date, subject, time_spent, confidence, mood, details])
+    writer.writerow([date, subject, time_spent, confidence, details])
+
 
 print("Study session added successfully! ")
 
@@ -32,13 +33,10 @@ df = pd.read_csv(Study_log)
 df["TimeSpent"] = pd.to_numeric(df["TimeSpent"], errors="coerce")
 df["Score"] = pd.to_numeric(df["Confidence"], errors="coerce")
 
-# Total study time per subject
-df.groupby("Subject")["TimeSpent"].sum().plot(kind="bar")
-plt.title("Total Study Time per Subject")
-plt.ylabel("Minutes")
-plt.show()
+print("\n Current Study Log:")
+print(df)
 
-# Average score per subject
+# Plot total study time per subject
 if not df.empty and df["TimeSpent"].notna().any():
     df.groupby("Subject")["TimeSpent"].sum().plot(kind="bar")
     plt.title("Total Study Time per Subject")
@@ -51,5 +49,3 @@ if not df.empty and df["Confidence"].notna().any():
     plt.title("Average Confidence per Subject")
     plt.ylabel("Confidence (0-100)")
     plt.show()
-
-
