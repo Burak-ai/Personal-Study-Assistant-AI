@@ -2,7 +2,7 @@ import csv
 from datetime import datetime
 import os
 import pandas as pd 
-import matplotlib as plt
+import matplotlib.pyplot as plt
 
 
 Study_log = "study_log.csv"
@@ -31,7 +31,6 @@ print("Study session added successfully! ")
 
 df = pd.read_csv(Study_log)
 df["TimeSpent"] = pd.to_numeric(df["TimeSpent"], errors="coerce")
-df["Score"] = pd.to_numeric(df["Confidence"], errors="coerce")
 
 print("\n Current Study Log:")
 print(df)
@@ -45,7 +44,7 @@ if not df.empty and df["TimeSpent"].notna().any():
 
 # Plot average confidence per subject
 if not df.empty and df["Confidence"].notna().any():
-    df.groupby("Subject")["Confidence"].mean().plot(kind="bar", color="orange")
+    df.groupby("Subject")["Confidence"].mean().plot(kind="bar", color="purple")
     plt.title("Average Confidence per Subject")
     plt.ylabel("Confidence (0-100)")
     plt.show()
