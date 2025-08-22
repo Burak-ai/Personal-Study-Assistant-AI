@@ -16,8 +16,7 @@ if not os.path.exists(Study_log):
 
 date = datetime.now().strftime("%Y-%m-%d")
 subject = input("Subject: ")
-time_spent_hours = float(input("Time spent (hours, e.g., 1.5 for 1 hour 30 min): "))
-time_spent = round(time_spent_hours * 60)
+time_input = input("Time spent (in minutes, e.g., 90 for 1h30): ")
 confidence = input("How confident do you feel in this session? (0-100): ")
 details = input("Details (what you practiced): ")
 
@@ -48,3 +47,4 @@ if not df.empty and df["Confidence"].notna().any():
     plt.title("Average Confidence per Subject")
     plt.ylabel("Confidence (0-100)")
     plt.show()
+
