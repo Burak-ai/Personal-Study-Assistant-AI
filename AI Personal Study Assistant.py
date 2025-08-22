@@ -30,6 +30,7 @@ print("Study session added successfully! ")
 
 df = pd.read_csv(Study_log)
 df["TimeSpent"] = pd.to_numeric(df["TimeSpent"], errors="coerce")
+df["Confidence"] = pd.to_numeric(df["Confidence"], errors="coerce")
 
 print("\n Current Study Log:")
 print(df)
@@ -47,6 +48,4 @@ if not df.empty and df["Confidence"].notna().any():
     plt.title("Average Confidence per Subject")
     plt.ylabel("Confidence (0-100)")
     plt.show()
-
-
-
+    
