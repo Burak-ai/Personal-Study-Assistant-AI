@@ -53,3 +53,6 @@ if not df.empty and df["Confidence"].notna().any():
     
 df["Date"] = pd.to_datetime(df["Date"])
 last_study = df.groupby("Subject")["Date"].max()
+days_since = (pd.Timestamp.today() - last_study).dt.days # days since last studied
+recommend_subject = days_since.idxmax() # Pick the subject with the largest days_since
+
