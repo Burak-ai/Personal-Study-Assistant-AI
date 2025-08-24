@@ -56,3 +56,11 @@ last_study = df.groupby("Subject")["Date"].max()
 days_since = (pd.Timestamp.today() - last_study).dt.days # days since last studied
 recommend_subject = days_since.idxmax() # Pick the subject with the largest days_since
 
+
+summary = df.groupby("Subject").agg({
+    "confidence":"sum",
+    "Time_spent":"mean"
+})
+
+summary['score'] = (100 - summary['Confidence']) + (1 / (summary['TimeSpent'] + 1) * 100)
+summary.sort_values('score', ascending=False)
