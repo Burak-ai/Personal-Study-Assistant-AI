@@ -15,6 +15,8 @@ if not os.path.exists(Study_log):
 
 
 date = datetime.now().strftime("%Y-%m-%d")
+Work_hours = float(input("How many hours can you work today? "))
+Work_minutes = Work_hours * 60 
 subject = input("Subject: ")
 time_spent = input("Time spent (in minutes, e.g., 90 for 1h30): ")
 confidence = input("How confident do you feel in this session? (0-100): ")
@@ -49,3 +51,4 @@ if not df.empty and df["Confidence"].notna().any():
     plt.ylabel("Confidence (0-100)")
     plt.show()
     
+
