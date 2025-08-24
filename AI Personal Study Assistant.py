@@ -50,12 +50,11 @@ if not df.empty and df["Confidence"].notna().any():
     plt.title("Average Confidence per Subject")
     plt.ylabel("Confidence (0-100)")
     plt.show()
-    
+
 df["Date"] = pd.to_datetime(df["Date"])
-last_study = df.groupby("Subject")["Date"].max()
+last_study = df.groupby("Subject")["Date"].max() # finds the most recent study date for each subject
 days_since = (pd.Timestamp.today() - last_study).dt.days # days since last studied
 recommend_subject = days_since.idxmax() # Pick the subject with the largest days_since
-
 
 summary = df.groupby("Subject").agg({
     "confidence":"sum",
