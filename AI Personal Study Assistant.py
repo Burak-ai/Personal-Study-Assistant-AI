@@ -51,4 +51,5 @@ if not df.empty and df["Confidence"].notna().any():
     plt.ylabel("Confidence (0-100)")
     plt.show()
     
-
+df["Date"] = pd.to_datetime(df["Date"])
+last_study = df.groupby("Subject")["Date"].max()
