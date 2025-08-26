@@ -57,7 +57,7 @@ days_since = (pd.Timestamp.today() - last_study).dt.days # days since last studi
 recommend_subject = days_since.idxmax() # subject not studied longest
 
 summary = df.groupby("Subject").agg({
-    "confidence":"sum",
+    "confidence":"mean",
     "Time_spent":"mean"
 })
 
@@ -73,3 +73,4 @@ for subject, row in summary.iterrows():
     remaining_time -= suggested_time
     if remaining_time <= 0:
         break
+
