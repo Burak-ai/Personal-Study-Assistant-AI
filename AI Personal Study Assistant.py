@@ -68,10 +68,11 @@ remaining_time = Work_minutes
 recommendations = []
 
 for subject, row in summary.iterrows(): # goes through each row of the summary DataFrame
-    suggested_time = min(remaining_time, 60)  # max 1 hour per subject
+    suggested_time = min(remaining_time, 50) # max 50 minutes per subject(My preference)
     recommendations.append((subject, suggested_time))
     remaining_time -= suggested_time
     if remaining_time <= 0:
         break
+
 
 
