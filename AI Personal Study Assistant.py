@@ -78,3 +78,10 @@ print("\nStudy Recommendations For Today:")
 
 for subjects, minutes in recommendations:
     print(f"- {subjects}: {minutes} minutes")
+
+rec_df = pd.DataFrame(recommendations, columns=["Subject", "Minutes"])
+rec_df.set_index("Subject").plot(kind="pie", y="Minutes", autopct='%1.0f%%')
+plt.title("Today's Recommended Study Plan")
+plt.ylabel("") 
+plt.show()
+
