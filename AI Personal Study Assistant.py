@@ -57,8 +57,8 @@ days_since = (pd.Timestamp.today() - last_study).dt.days # days since last studi
 recommend_subject = days_since.idxmax() # subject not studied longest
 
 summary = df.groupby("Subject").agg({
-    "confidence":"mean",
-    "Time_spent":"mean"
+    "Confidence":"mean",
+    "TimeSpent":"mean"
 })
 
 summary['score'] = (100 - summary['Confidence']) + (1 / (summary['TimeSpent'] + 1) * 100)
@@ -97,4 +97,5 @@ if Progress in ["y", "yes"]:
     print(conf_avg)
 else: 
     pass
+
 
