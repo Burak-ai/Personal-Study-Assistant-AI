@@ -85,11 +85,16 @@ plt.title("Today's Recommended Study Plan")
 plt.ylabel("") 
 plt.show()
 
-Progress = input("Do you want to see your progress so far y/n?")
-if Progress == "y":
+Progress = input("Do you want to see your progress so far (y/n)? ").lower()
+
+if Progress in ["y", "yes"]:
     print("\nStudy Progress:")
-    print("Total study time(hours):", df["TimeSpent"].sum() / 60)
+    print("Total study time (hours):", round(df["TimeSpent"].sum() / 60, 2))
     print("The most studied subject:", df.groupby("Subject")["TimeSpent"].sum().idxmax())
-    print("Average confidence for each subject",df["Confidence"].mean())
+    print("Average confidence (overall):", round(df["Confidence"].mean(), 1))
+    conf_avg = df.groupby("Subject")["Confidence"].mean().round(1).reset_index()
+    print("\nAverage confidence per subject:")
+    print(conf_avg)
 else: 
     pass
+
