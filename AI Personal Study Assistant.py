@@ -18,7 +18,7 @@ date = datetime.now().strftime("%Y-%m-%d")
 Work_hours = float(input("How many hours can you work today? "))
 Work_minutes = Work_hours * 60 
 subject = input("Subject: ")
-time_spent = input("Time spent (in minutes, e.g., 90 for 1h30): ")
+time_spent = float(input("Time spent (in minutes, e.g., 90 for 1h30): "))
 confidence = input("How confident do you feel in this session? (0-100): ")
 details = input("Details (what you practiced): ")
 
@@ -95,7 +95,4 @@ if Progress in ["y", "yes"]:
     conf_avg = df.groupby("Subject")["Confidence"].mean().round(1).reset_index()
     print("\nAverage confidence per subject:")
     print(conf_avg)
-else: 
-    pass
-
 
