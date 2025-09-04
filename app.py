@@ -19,5 +19,6 @@ with st.form("study_form"):
     details = st.text_area("Details (what you practiced)")
     submit = st.form_submit_button("Add Session")
 
+st.dataframe(df)
 
 
