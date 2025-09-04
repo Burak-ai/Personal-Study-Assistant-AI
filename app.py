@@ -13,3 +13,5 @@ with st.form("study_form"):
     subject = st.text_input("subject")
     time_spent = st.number_input("Timespent", min_value=0.0, value=60.0,step=5.0)
     confidence = st.slider("Confidence (0-100)", 0, 100, 75)
+    details = st.text_area("Details (what you practiced)")
+    submit = st.form_submit_button("Add Session")
