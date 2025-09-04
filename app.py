@@ -1,6 +1,12 @@
 import streamlit as st
+
 Study_log = "study_log.csv"
-headers = ["Date", "Subject", "TimeSpent", "Confidence", "Details"]
+if not os.path.exists(Study_log):
+    df = pd.DataFrame(columns=["Date", "Subject", "TimeSpent", "Confidence", "Details"])
+    df.to_csv(Study_log, index=False)
+else:
+    df = pd.read_csv(Study_log)
+
 
 with st.form("study_form"): 
     work_hours = st.number_input(
@@ -10,4 +16,5 @@ with st.form("study_form"):
     confidence = st.slider("Confidence (0-100)", 0, 100, 75)
     details = st.text_area("Details (what you practiced)")
     submit = st.form_submit_button("Add Session")
+
 
