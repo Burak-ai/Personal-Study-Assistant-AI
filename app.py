@@ -1,3 +1,5 @@
+import pandas as pd
+import os
 import streamlit as st
 
 Study_log = "study_log.csv"
@@ -16,5 +18,6 @@ with st.form("study_form"):
     confidence = st.slider("Confidence (0-100)", 0, 100, 75)
     details = st.text_area("Details (what you practiced)")
     submit = st.form_submit_button("Add Session")
+
 
 
