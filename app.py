@@ -36,9 +36,3 @@ if submit:
 
 st.subheader("Current Study Log")
 st.dataframe(df)
-
-
-
-
-
-
