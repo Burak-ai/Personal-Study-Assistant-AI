@@ -19,6 +19,21 @@ with st.form("study_form"):
     details = st.text_area("Details (what you practiced)")
     submit = st.form_submit_button("Add Session")
 
+from datetime import datetime
+
+if submit:
+    new_entry = {
+        "Date": datetime.now().strftime("%Y-%m-%d"),
+        "Subject": subject,
+        "TimeSpent": time_spent,
+        "Confidence": confidence,
+        "Details": details,
+    }
+    df = df.append(new_entry, ignore_index=True)   # add row to DataFrame
+    df.to_csv(Study_log, index=False)              # save back to CSV
+    st.success("✅ Study session added successfully!")
+
 st.dataframe(df)
+
 
 
