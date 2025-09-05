@@ -33,6 +33,5 @@ if submit:
 
     df = pd.concat([df, new_entry], ignore_index=True)
     df.to_csv(Study_log, index=False)
-st.success("Study session added successfully!")
-
+    st.success("Study session added successfully!")
 
