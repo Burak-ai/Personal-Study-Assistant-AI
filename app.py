@@ -1,6 +1,7 @@
 import pandas as pd
 import os
 import streamlit as st
+from datetime import datetime
 
 Study_log = "study_log.csv"
 if not os.path.exists(Study_log):
@@ -19,7 +20,7 @@ with st.form("study_form"):
     details = st.text_area("Details (what you practiced)")
     submit = st.form_submit_button("Add Session")
 
-from datetime import datetime
+
 
 if submit:
     new_entry = {
@@ -34,6 +35,7 @@ if submit:
     st.success("✅ Study session added successfully!")
 
 st.dataframe(df)
+
 
 
 
