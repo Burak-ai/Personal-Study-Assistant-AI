@@ -34,7 +34,9 @@ if submit:
     df.to_csv(Study_log, index=False)              # save back to CSV
     st.success("Study session added successfully!")
 
+st.subheader("Current Study Log")
 st.dataframe(df)
+
 
 
 
