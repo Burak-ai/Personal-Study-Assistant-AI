@@ -23,16 +23,14 @@ with st.form("study_form"):
 
 
 if submit:
-    new_entry = {
-        "Date": datetime.now().strftime("%Y-%m-%d"),
-        "Subject": subject,
-        "TimeSpent": time_spent,
-        "Confidence": confidence,
-        "Details": details,
-    }
-    df = df.append(new_entry, ignore_index=True)   # add row to DataFrame
-    df.to_csv(Study_log, index=False)              # save back to CSV
-    st.success("Study session added successfully!")
+    new_entry = pd.DataFrame([{
+    "Date": datetime.now().strftime("%Y-%m-%d"),
+    "Subject": subject,
+    "TimeSpent": time_spent,
+    "Confidence": confidence,
+    "Details": details,
+}])
 
-st.subheader("Current Study Log")
-st.dataframe(df)
+df = pd.concat([df, new_entry], ignore_index=True)
+df.to_csv(Study_log, index=False)
+
