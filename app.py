@@ -32,9 +32,10 @@ if submit:
     }
     df = df.append(new_entry, ignore_index=True)   # add row to DataFrame
     df.to_csv(Study_log, index=False)              # save back to CSV
-    st.success("✅ Study session added successfully!")
+    st.success("Study session added successfully!")
 
 st.dataframe(df)
+
 
 
 
