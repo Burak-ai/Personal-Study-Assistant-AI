@@ -39,4 +39,9 @@ st.subheader("Total Study Time per Subject")
 time_per_subject = df.groupby("Subject")["TimeSpent"].sum()
 st.bar_chart(time_per_subject)
 
+st.subheader("Average Confidence per Subject")
+conf_per_subject = df.groupby("Subject")["Confidence"].mean()
+st.bar_chart(conf_per_subject)
+
+
 
