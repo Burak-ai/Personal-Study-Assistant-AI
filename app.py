@@ -46,5 +46,9 @@ st.bar_chart(conf_per_subject)
 st.subheader("Study Time Distribution")
 st.pyplot(df.groupby("Subject")["TimeSpent"].sum().plot.pie(autopct='%1.0f%%').get_figure())
 
+st.subheader("Study Progress Over Time")
+df["Date"] = pd.to_datetime(df["Date"])
+time_over_time = df.groupby("Date")["TimeSpent"].sum()
+st.line_chart(time_over_time)
 
 
