@@ -35,4 +35,8 @@ if submit:
     df.to_csv(Study_log, index=False)
     st.success("Study session added successfully!")
 
+st.subheader("Total Study Time per Subject")
+time_per_subject = df.groupby("Subject")["TimeSpent"].sum()
+st.bar_chart(time_per_subject)
+
 
