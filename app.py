@@ -43,5 +43,7 @@ st.subheader("Average Confidence per Subject")
 conf_per_subject = df.groupby("Subject")["Confidence"].mean()
 st.bar_chart(conf_per_subject)
 
+st.subheader("🥧 Study Time Distribution")
+st.pyplot(df.groupby("Subject")["TimeSpent"].sum().plot.pie(autopct='%1.0f%%').get_figure())
 
 
